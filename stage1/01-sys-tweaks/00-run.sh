@@ -10,6 +10,9 @@ if ! id -u pi >/dev/null 2>&1; then
 	adduser --disabled-password --gecos "" chris
 fi
 echo "root:root" | chpasswd
+
+passwd -d chris
+chage -d0 chris
 EOF
 
 install -m 700 -d				${ROOTFS_DIR}/home/chris/.ssh
