@@ -7,17 +7,17 @@ install -v -m 644 files/fstab ${ROOTFS_DIR}/etc/fstab
 
 on_chroot << EOF
 if ! id -u pi >/dev/null 2>&1; then
-	adduser --disabled-password --gecos "" chris
+	adduser --disabled-password --gecos "" ucowl
 fi
 echo "root:root" | chpasswd
 
-passwd -d chris
-chage -d0 chris
+passwd -d ucowl
+chage -d0 ucowl
 EOF
 
-install -m 700 -d				${ROOTFS_DIR}/home/chris/.ssh
-install -m 600 files/authorized_keys		${ROOTFS_DIR}/home/chris/.ssh/authorized_keys
+install -m 700 -d				${ROOTFS_DIR}/home/ucowl/.ssh
+install -m 600 files/authorized_keys		${ROOTFS_DIR}/home/ucowl/.ssh/authorized_keys
 
 on_chroot << EOF
-chown -R chris:chris /home/chris/.ssh
+chown -R ucowl:ucowl /home/ucowl/.ssh
 EOF
